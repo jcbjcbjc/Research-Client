@@ -17,6 +17,7 @@ namespace GameLogic
         int teamid;
         int cCharacterId;
 
+
         public int Userid
         {
             get { return userid; }
