@@ -43,8 +43,6 @@ namespace GameLogic
             character.Teamid = roomUser.TeamId;
             character.CCharacterId = roomUser.CCharacterId;
             character.Positionid = index;
-
-            character.
  
             AddCharacter(character);
         }
