@@ -100,7 +100,7 @@ namespace GameLogic
             uIGameLoadIn.SetMsg("游戏拼命加载中...");
             
           
-            characterManager_.CreateCharacter();
+            characterManager_.InitCharacters();
 
             // change the GameData
             GameData.gameStatus = GameStatus.GameIn;

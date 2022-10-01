@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace GameLogic
 {
-    public class Entity:MonoBehaviour{
+    public class Entity : MonoBehaviour {
         protected int entityId_;
         protected GameObject gameObject_;
         protected EntityType entityType_;
@@ -33,10 +33,18 @@ namespace GameLogic
         public GameObject GameObject { get { return gameObject_; } }
         public EntityType EntityType { get { return entityType_; } }
 
-        public virtual void logicUpdate() { 
+        public virtual void logicUpdate() {
 
         }
 
+        public void setLogicPosition(Vector3 vector3) {
+            logicPosition_ = vector3;
+            gameObject_.transform.position = vector3;
+        }
 
+        public void setLogicRotation(Quaternion quaternion) { 
+            logicRotation_ = quaternion;
+            gameObject_.transform.rotation = quaternion;
+        }
     }
 }

@@ -12,10 +12,11 @@ namespace GameLogic
         Dictionary<int, Entity> entityMap = new Dictionary<int, Entity>();
 
         public void Clear() { 
+            entityMap.Clear();
         }
 
-        public void AddEntity(Entity entity,int entityId) { 
-
+        public void AddEntity(Entity entity,int entityId) {
+            entityMap[entityId] = entity;
         }
         public Entity GetEntity(int entityId) { 
             return entityMap[entityId];

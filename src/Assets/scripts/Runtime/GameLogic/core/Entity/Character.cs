@@ -11,32 +11,36 @@ namespace GameLogic
 {
     public  class Character:LiveEntity
     {
-        public NUser user;
-        int userid;
-        string nickname;
-        int teamid;
-        int cCharacterId;
+        int userid_;
+        string nickname_;
+        int teamid_;
+        int positionid_;
+        int cCharacterId_;
 
 
         public int Userid
         {
-            get { return userid; }
-            set { userid = value; }
+            get { return userid_; }
+            set { userid_ = value; }
         }
         public string Nickname
         {
-            get { return nickname; }
-            set { nickname = value; }
+            get { return nickname_; }
+            set { nickname_ = value; }
         }
         public int Teamid
         {
-            get { return teamid; }
-            set { teamid = value; }
+            get { return teamid_; }
+            set { teamid_ = value; }
+        }
+        public int Positionid { 
+            get { return positionid_; }
+            set { positionid_ = value; }
         }
         public int CCharacterId
         {
-            get { return cCharacterId; }
-            set { cCharacterId = value; }
+            get { return cCharacterId_; }
+            set { cCharacterId_ = value; }
         }
         public void update(FrameHandle fh) {
             LogUtil.log("update");

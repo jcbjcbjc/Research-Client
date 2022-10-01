@@ -12,13 +12,23 @@ using C2GNet;
 /// </summary>
 namespace NetWork
 {
-    public class User :Service
+    public class User : Service
     {
-        
 
-        public NUser user=null;
+
+        public NUser user = null;
         public bool isLogin = false;  //ÊÇ·ñµÇÂ¼
         public NRoom room = null;  //·¿¼ä
+
+        public NUser NUser
+        {
+            get{ return user; }
+            set{ user = value; }
+        }
+        public NRoom NRoom { 
+            get{ return room; }
+            set{ room = value; }
+        }
 
     }
 
