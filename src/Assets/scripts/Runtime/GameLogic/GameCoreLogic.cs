@@ -58,8 +58,6 @@ namespace GameLogic
 
 
 
-
-
         }
 
         private void recordLastPos()

@@ -70,7 +70,6 @@ public class GameData {
     #endregion
     
 
-
     
 
     public struct battleInfo
