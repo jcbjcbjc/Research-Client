@@ -6,11 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.scripts.Utils;
 using C2BNet;
+using Services;
 
 namespace GameLogic
 {
     public  class Character:LiveEntity
     {
+        EventSystem _eventSystem;
+
+
         int userid_;
         string nickname_;
         int teamid_;
@@ -42,6 +46,11 @@ namespace GameLogic
             get { return cCharacterId_; }
             set { cCharacterId_ = value; }
         }
+
+        public void Update()
+        {
+        }
+
         public void update(FrameHandle fh) {
             LogUtil.log("update");
         }
