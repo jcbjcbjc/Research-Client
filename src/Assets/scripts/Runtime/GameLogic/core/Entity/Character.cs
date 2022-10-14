@@ -6,11 +6,17 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.scripts.Utils;
 using C2BNet;
+using Services;
+using UnityEngine;
+using NetWork;
 
 namespace GameLogic
 {
     public  class Character:LiveEntity
     {
+
+        private float m_speed = 10f;
+
         int userid_;
         string nickname_;
         int teamid_;
@@ -43,7 +49,11 @@ namespace GameLogic
             set { cCharacterId_ = value; }
         }
         public void update(FrameHandle fh) {
-            LogUtil.log("update");
+            LogUtil.log("move");
+            if (fh.Opt == 1) {
+                LogUtil.log("move");
+                this.transform.Translate(Vector3.left);
+            }
         }
     }
 }
