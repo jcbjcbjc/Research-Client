@@ -121,8 +121,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
+      - m_Target: {fileID: 1601541230773035845}
+        m_TargetAssemblyTypeName: UI.GameOver, Assembly-CSharp
         m_MethodName: OnClickReturn
         m_Mode: 1
         m_Arguments:
@@ -205,5 +205,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd71d0c91a6f8a4881a1050288b72af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ReturnRoom: {fileID: 0}
+  ReturnRoom: {fileID: 3055135964424508386}
   QuitButton: {fileID: 0}

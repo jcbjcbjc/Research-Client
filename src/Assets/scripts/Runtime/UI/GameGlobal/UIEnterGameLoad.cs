@@ -42,12 +42,12 @@ namespace UI
 
             //连接到战斗服务器
             var ipPortArr = ServiceLocator.Get<User>().room.IpPortStr.Split(':');
-            NetConfig.UdpIp = ipPortArr[0];
-            NetConfig.UdpPort = int.Parse(ipPortArr[2]);
+            string ip = ipPortArr[0];
+            int port = int.Parse(ipPortArr[2]);
 
-            LogUtil.log("战斗服务器地址：" + NetConfig.UdpIp + NetConfig.UdpPort);
+            LogUtil.log("战斗服务器地址：" + ip + port);
 
-            NetBattleClient.GetInstance().connectToServer(NetConfig.UdpIp, NetConfig.UdpPort);
+            NetBattleClient.GetInstance().connectToServer(ip, port);
             eventSystem.AddListener<PercentForwardResponse>(EEvent.OnPercentForward, OnPercentForward);
 
             if (GameData.battleMode == BattleMode.Battle)
