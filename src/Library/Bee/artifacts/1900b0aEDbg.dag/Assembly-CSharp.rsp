@@ -378,6 +378,7 @@
 "Assets/Addon/StateMathine/Runtime/State.cs"
 "Assets/Addon/StateMathine/Runtime/StateMapper.cs"
 "Assets/Addon/StateMathine/Runtime/StateMathine.cs"
+"Assets/scripts/Runtime/GameLogic/Multiple/core/Entity/Capture.cs"
 "Assets/scripts/Runtime/GameLogic/Multiple/core/Entity/Character.cs"
 "Assets/scripts/Runtime/GameLogic/Multiple/core/Entity/Entity.cs"
 "Assets/scripts/Runtime/GameLogic/Multiple/core/Entity/LiveEntity.cs"

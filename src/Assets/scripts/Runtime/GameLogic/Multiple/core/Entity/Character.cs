@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.scripts.Utils;
 using C2BNet;
+using UnityEngine;
 
 namespace GameLogic
 {
@@ -43,7 +44,14 @@ namespace GameLogic
             set { cCharacterId_ = value; }
         }
         public void update(FrameHandle fh) {
-            LogUtil.log("update");
+
+
+            LogUtil.log("move");
+            if (fh.Opt == 1)
+            {
+                LogUtil.log("move");
+                this.transform.Translate(Vector3.left);
+            }
         }
     }
 }
