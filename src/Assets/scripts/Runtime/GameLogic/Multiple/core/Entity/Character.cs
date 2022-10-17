@@ -44,10 +44,8 @@ namespace GameLogic
             set { cCharacterId_ = value; }
         }
         public void update(FrameHandle fh) {
-            if (fh.Opt == 1)
-            {
-                this.transform.Translate(Vector3.left);
-            }
+            transform.Translate(-Vector3.left * fh.OptValue1 * 2);
+            transform.Translate(Vector3.forward * fh.OptValue2 * 2);
         }
     }
 }
