@@ -44,12 +44,8 @@ namespace GameLogic
             set { cCharacterId_ = value; }
         }
         public void update(FrameHandle fh) {
-
-
-            LogUtil.log("move");
             if (fh.Opt == 1)
             {
-                LogUtil.log("move");
                 this.transform.Translate(Vector3.left);
             }
         }
