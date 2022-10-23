@@ -4,7 +4,7 @@
 using System;
 using System.Text;
 
-namespace cocosocket4unity
+namespace KCP
 {
 	public class ByteBuf
 	{
@@ -33,7 +33,12 @@ namespace cocosocket4unity
             markReader = 0;
             markWriter = 0;
         }
-        private ByteBuf()
+		public bool isReadable() {
+			return readerIndex != writerIndex;
+		}
+
+
+		private ByteBuf()
         {
  
         }
