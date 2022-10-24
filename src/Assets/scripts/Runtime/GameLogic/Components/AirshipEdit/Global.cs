@@ -6,7 +6,9 @@ namespace GameLogic
 {
     public static class Global
     {
-        public static readonly LayerMask slotLayer = LayerMask.GetMask("Slot");
-        public static Slot selectedSlot = null;
+        // 准备删除
+        public static readonly LayerMask airshipLayer = LayerMask.GetMask("Airship");
+        
+        public static UI.MenuItem selectedItem = null;
     }
 }
