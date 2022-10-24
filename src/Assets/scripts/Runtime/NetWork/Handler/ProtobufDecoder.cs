@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using KCP;
 
+
+using Assets.scripts.Utils;
 namespace NetWork
 {
     public class ProtobufDecoder
@@ -13,7 +15,11 @@ namespace NetWork
         { 
             In.MarkReaderIndex();
             int preIndex = In.ReaderIndex();
-            int length = readRawVarint32(In);
+            int length = readint32(In);
+            if (length == -1) {
+                return;
+            }
+            
             if (preIndex != In.ReaderIndex()) {
                 if (length < 0)
                 {
@@ -22,7 +28,7 @@ namespace NetWork
                 else
                 {
                     if (In.ReadableBytes() < length) {
-                    In.ResetReaderIndex();
+                       In.ResetReaderIndex();
                     } else
                     {
                         Out.WriteBytes(In,length); 
@@ -30,82 +36,22 @@ namespace NetWork
                 }
             }
         }
-        private static int readRawVarint32(ByteBuf buffer)
+        private static int readint32(ByteBuf buffer)
         {
-            if (!buffer.isReadable())
+            if (buffer.ReadableBytes() >= 4)
             {
-                return 0;
+                int var1 = buffer.ReadByte();
+                int var2 = buffer.ReadByte();
+                int var3 = buffer.ReadByte();
+                int var4 = buffer.ReadByte();
+
+                int addr = var1 & 0xFF;
+                addr |= ((var2 << 8) & 0xFF00);
+                addr |= ((var3 << 16) & 0xFF0000);
+                addr |= (int)((var4 << 24) & 0xFF000000);
+                return addr;
             }
-            else
-            {
-                buffer.MarkReaderIndex();
-                byte tmp = buffer.ReadByte();
-                if (tmp >= 0)
-                {
-                    return tmp;
-                }
-                else
-                {
-                    int result = tmp & 127;
-                    if (!buffer.isReadable())
-                    {
-                        buffer.ResetReaderIndex();
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((tmp = buffer.ReadByte()) >= 0)
-                        {
-                            result |= tmp << 7;
-                        }
-                        else
-                        {
-                            result |= (tmp & 127) << 7;
-                            if (!buffer.isReadable())
-                            {
-                                buffer.ResetReaderIndex();
-                                return 0;
-                            }
-
-                            if ((tmp = buffer.ReadByte()) >= 0)
-                            {
-                                result |= tmp << 14;
-                            }
-                            else
-                            {
-                                result |= (tmp & 127) << 14;
-                                if (!buffer.isReadable())
-                                {
-                                    buffer.ResetReaderIndex();
-                                    return 0;
-                                }
-
-                                if ((tmp = buffer.ReadByte()) >= 0)
-                                {
-                                    result |= tmp << 21;
-                                }
-                                else
-                                {
-                                    result |= (tmp & 127) << 21;
-                                    if (!buffer.isReadable())
-                                    {
-                                        buffer.ResetReaderIndex();
-                                        return 0;
-                                    }
-
-                                    result |= (tmp = buffer.ReadByte()) << 28;
-                                    if (tmp < 0)
-                                    {
-                                       
-                                    }
-                                }
-                            }
-                        }
-
-                        return result;
-                    }
-                }
-            }
+            else { return -1; }
         }
     }
 }

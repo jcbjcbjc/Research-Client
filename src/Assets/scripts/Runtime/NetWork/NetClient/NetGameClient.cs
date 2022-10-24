@@ -100,17 +100,23 @@ namespace NetWork
 				int length = TcpSocket.EndReceive(ar);
 				if (length > 0)
 				{
-					TCPreadbuf.WriteBytes(buf,0,length);
-					Array.Clear(buf,0,length);
-					
-					ByteBuf Out=new ByteBuf(1024 * 1024);
 
-					ProtobufDecoder.Decode(TCPreadbuf, Out);   //bytesToInt(TCPreadbuf);
-					if (Out.isReadable()) {
-						C2GNetMessage msgs = C2GNetMessage.Parser.ParseFrom(Out.GetRaw(), 0, Out.ReadableBytes());
-						MessageDispatcher.AddTask(new NetMessage(msgs));
-					}
-                    
+
+                    TCPreadbuf.WriteBytes(buf, 0, length);
+					
+					Array.Clear(buf, 0, length);
+
+                    ByteBuf Out = new ByteBuf(1024 * 1024);
+
+
+                    ProtobufDecoder.Decode(TCPreadbuf, Out);
+
+                    if (Out.isReadable())
+                    {
+                        C2GNetMessage msgs = C2GNetMessage.Parser.ParseFrom(Out.GetRaw(), Out.ReaderIndex(), Out.ReadableBytes());
+                        MessageDispatcher.AddTask(new NetMessage(msgs));
+                    }
+
                     TcpSocket.BeginReceive(buf, 0, buf.Length, SocketFlags.None, StartReceiveCallback, TcpSocket);
 
 
