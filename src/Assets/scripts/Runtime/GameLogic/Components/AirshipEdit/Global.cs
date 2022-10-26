@@ -10,5 +10,7 @@ namespace GameLogic
         public static readonly LayerMask airshipLayer = LayerMask.GetMask("Airship");
         
         public static UI.MenuItem selectedItem = null;
+
+        public static bool lineMode = false;
     }
 }
