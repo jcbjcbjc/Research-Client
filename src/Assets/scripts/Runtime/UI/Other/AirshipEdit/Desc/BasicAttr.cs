@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace UI.Desc
 {
-    public class Basic
+    public class BasicAttr : Attr
     {
         public string name;
         public float range;

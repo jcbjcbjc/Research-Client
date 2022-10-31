@@ -9,6 +9,9 @@ namespace UI {
     {
         protected Image image;
 
+        public Color defaultColor = new Color(1.0f, 1.0f, 1.0f, 0.390625f);
+        public Color selectedColor = new Color(0.0f, 0.0f, 1.0f, 0.390625f);
+
         // Start is called before the first frame update
         void Start()
         {
@@ -19,9 +22,9 @@ namespace UI {
         void Update()
         {
             if (GameLogic.Global.selectedItem == this){
-                image.color = new Color(0.0f, 0.0f, 1.0f, 0.390625f);
+                image.color = selectedColor;
             }else{
-                image.color = new Color(1.0f, 1.0f, 1.0f, 0.390625f);
+                image.color = defaultColor;
             }
         }
 
@@ -30,7 +33,12 @@ namespace UI {
         }
 
         public void PlaceOnSlot(Slot slot){
-            slot.level = Slot.Level.PRIMARY;
+            Desc.ArmorAttr armor = slot.GetComponent<Desc.ArmorAttr>();
+            if (armor == null){
+                armor = slot.gameObject.AddComponent<Desc.ArmorAttr>();
+            }
+            if (armor.level < Desc.ArmorAttr.Level.LAST_LEVEL)
+                armor.level++;
         }
     }
 }

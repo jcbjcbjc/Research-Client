@@ -121,7 +121,7 @@ namespace UI {
             if (idx == prevIdx)
                 return;
             prevIdx = idx;
-            if (idx.x >= 0 && idx.x <= width && idx.y >= 0 && idx.y <= height){
+            if (idx.x >= 0 && idx.x < width && idx.y >= 0 && idx.y < height){
                 slotArray[idx.x, idx.y].GetComponent<Slot>().OnClick();
             }
         }
