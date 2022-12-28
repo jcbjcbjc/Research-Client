@@ -48,6 +48,9 @@ namespace UI
             LogUtil.log("战斗服务器地址：" + ip + port);
 
             NetBattleClient.GetInstance().connectToServer(ip, port);
+
+            isGoToBattleScene = false;
+
             eventSystem.AddListener<PercentForwardResponse>(EEvent.OnPercentForward, OnPercentForward);
 
             if (GameData.battleMode == BattleMode.Battle)
@@ -86,6 +89,7 @@ namespace UI
             //全部用户资源加载成功
             if (response.AllUserLoadSucess && !this.isGoToBattleScene)
             {
+                
                 this.isGoToBattleScene = true;
 
                 LogUtil.log("跳转战斗场景");
@@ -128,7 +132,7 @@ namespace UI
                 timer.Paused = true;
             }
             percent_ = 0;
-            isGoToBattleScene = false;
+
             base.CloseUIForm();
 
         }

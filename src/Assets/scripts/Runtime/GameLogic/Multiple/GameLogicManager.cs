@@ -88,7 +88,7 @@ namespace GameLogic
             uIGameLoadIn.SetMsg("游戏拼命加载中...");
             
           
-           ServiceLocator.Get<CharacterManager>().InitCharacters();
+            ServiceLocator.Get<CharacterManager>().InitCharacters();
 
             // change the GameData
 
